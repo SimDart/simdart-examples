@@ -1,1 +1,3 @@
-# simdart-examples
+# SimDart examples
+
+Examples of SimDart.
