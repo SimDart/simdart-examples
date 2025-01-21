@@ -11,7 +11,7 @@ void main() async {
 
 void eventA(EventContext context) async {
   await context.wait(10);
-  context.sim.process(eventC, name: 'C');
+  context.sim.process(eventC, delay: 1, name: 'C');
 }
 
 void eventB(EventContext context) async {
