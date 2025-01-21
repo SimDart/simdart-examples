@@ -1,23 +1,23 @@
 import 'package:simdart/simdart.dart';
 
 void main() async {
-  final SimDart sim = SimDart();
+  final SimDart sim = SimDart(onTrack: (track) => print(track));
 
-  sim.process(eventA);
-  sim.process(eventB, start: 5);
+  sim.process(eventA, name: 'A');
+  sim.process(eventB, start: 5, name: 'B');
 
   await sim.run();
 }
 
 void eventA(EventContext context) async {
   await context.wait(10);
-  context.sim.process(eventC);
+  context.sim.process(eventC, name: 'C');
 }
 
 void eventB(EventContext context) async {
-  await context.wait(5);
+  await context.wait(1);
 }
 
 void eventC(EventContext context) async {
-  await context.wait(15);
+  await context.wait(10);
 }
