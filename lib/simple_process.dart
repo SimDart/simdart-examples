@@ -1,7 +1,7 @@
 import 'package:simdart/simdart.dart';
 
 void main() async {
-  final SimDart sim = SimDart(onTrack: (track) => print(track));
+  final SimDart sim = SimDart();
 
   sim.process(event: _a, name: 'A');
   sim.process(event: _b, start: 5, name: 'B');
@@ -9,15 +9,21 @@ void main() async {
   await sim.run();
 }
 
-void _a(EventContext context) async {
+Future<void> _a(SimContext context) async {
+  print('[${context.now}][${context.eventName}] start');
   await context.wait(10);
-  context.sim.process(event: _c, delay: 1, name: 'C');
+  context.process(event: _c, delay: 1, name: 'C');
+  print('[${context.now}][${context.eventName}] end');
 }
 
-void _b(EventContext context) async {
+Future<void> _b(SimContext context) async {
+  print('[${context.now}][${context.eventName}] start');
   await context.wait(1);
+  print('[${context.now}][${context.eventName}] end');
 }
 
-void _c(EventContext context) async {
+Future<void> _c(SimContext context) async {
+  print('[${context.now}][${context.eventName}] start');
   await context.wait(10);
+  print('[${context.now}][${context.eventName}] end');
 }

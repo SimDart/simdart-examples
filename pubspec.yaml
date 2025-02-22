@@ -1,14 +1,14 @@
 name: simdart_examples
 description: Examples of SimDart.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/SimDart/simdart-examples
 
 environment:
   sdk: ^3.6.0
 
 dependencies:
-  simdart: #^0.1.0
-    path: ../simdart
+  simdart: ^0.2.0
+    #path: ../simdart2
 
 dev_dependencies:
   lints: ^5.0.0

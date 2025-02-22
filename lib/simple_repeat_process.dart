@@ -1,15 +1,17 @@
 import 'package:simdart/simdart.dart';
 
 void main() async {
-  final SimDart sim = SimDart(onTrack: (track) => print(track));
+  final SimDart sim = SimDart();
 
   sim.repeatProcess(
       event: _a,
       start: 1,
-      name: 'A',
+      name: (start) => 'A$start',
       interval: Interval.fixed(fixedInterval: 2, untilTime: 5));
 
   await sim.run();
 }
 
-void _a(EventContext context) async {}
+Future<void> _a(SimContext context) async {
+  print('[${context.now}][${context.eventName}]');
+}
